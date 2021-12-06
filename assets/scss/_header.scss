@@ -1,0 +1,14 @@
+header {
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fafafa;
+  border-bottom: black 2px solid;
+  ul {
+    margin-right: 2em;
+    display: flex;
+    gap: 2em;
+    font-family: "Rubiks";
+  }
+}

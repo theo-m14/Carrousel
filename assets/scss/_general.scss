@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Maven Pro";
+  src: url("../fonts/MavenPro-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Rubiks";
+  src: url("../fonts/Rubik-Regular.ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: "Maven Pro";
+}

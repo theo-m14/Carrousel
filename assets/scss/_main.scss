@@ -1,0 +1,14 @@
+#carrousel {
+  background-image: url("../images/ImageCallOfDutyMW2.jpg");
+  width: 100%;
+  height: 30em;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: black 2px solid;
+  .carrouselSwitch {
+    padding: 2em;
+    font-size: 32px;
+  }
+}
