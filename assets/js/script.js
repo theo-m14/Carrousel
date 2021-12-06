@@ -26,28 +26,36 @@ let currentGameArrayId = 0; //On stock l'id du jeu actuellement affiché sur le 
 let getCarrousel = document.getElementById("carrousel");
 let getPreviousSwitch = document.getElementById("previousImage");
 let getNextSwitch = document.getElementById("nextImage");
-
+let AnotherForRun = false;
 
 /*On écoute le clic sur les switchs du carrousel*/
 getPreviousSwitch.addEventListener("click", function(e){
     if(currentGameArrayId==0){//On gère le cas où on est déjà au début du tableau
         currentGameArrayId=gameArray.length-1;
-        displayImage(currentGameArrayId); //On affiche l'image selon l'id voulu
+        displayImage(currentGameArrayId);
+        AnotherForRun = true;
+        infiniteFor(currentGameArrayId); //On affiche l'image selon l'id voulu
     }
     else{
         currentGameArrayId--;
         displayImage(currentGameArrayId);
+        AnotherForRun = true;
+        infiniteFor(currentGameArrayId);
     }
 });
 
 getNextSwitch.addEventListener("click", function(e){
     if(currentGameArrayId==gameArray.length-1){ //On gère le cas où arrive à la fin du tableau
         currentGameArrayId=0;
-        displayImage(currentGameArrayId); //On affiche l'image selon l'id voulu
+        displayImage(currentGameArrayId);
+        AnotherForRun = true;   //On affiche l'image selon l'id voulu
+        infiniteFor(currentGameArrayId); 
     }
     else{
         currentGameArrayId++;
         displayImage(currentGameArrayId);
+        AnotherForRun = true;
+        infiniteFor(currentGameArrayId);
     }
 });
 
@@ -57,3 +65,44 @@ function displayImage(idImage){
     getCarrousel.style.backgroundImage = 'url("' + gameArray[idImage].img + '")';
 }
 
+//boucle d'affichage automatique
+infiniteFor(currentGameArrayId);
+
+
+function infiniteFor(currentImg){
+    console.log("Je passe ici");
+    //AnotherForRun = false;
+    for(let i=currentImg;i<gameArray.length;i++){
+        console.log("Et la");
+        setTimeout(() =>{//On set le délai entre les images
+            displayImage(i);
+            console.log(i);
+            if(i==gameArray.length-1){//Si j'arrive à la fin je remet à 0
+                setTimeout(()=>{
+                    infiniteFor(0);//Quand j'arrive a la fin je reviens au début
+                },2000);
+            }
+            /*if(AnotherForRun){
+                console.log("ca me soul")
+                return 0;
+            }*/
+        }, i*2000);
+    }
+}
+
+
+/*function infiniteForEach(){
+    gameArray.forEach((game,i) =>{
+        setTimeout(() =>{
+            displayImage(i);
+            console.log(i);
+            if(i==gameArray.length-1){
+                console.log("Yoo");
+                setTimeout(()=>{
+                    infiniteForEach();
+                },2000);
+            }
+        }, i*2000);
+    });
+
+}*/
